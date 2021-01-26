@@ -121,6 +121,10 @@ def create_code_recursion(node, current_code):
 import sys
 
 def huffman_encoding(data):
+    if len(data) == 0:
+        print("Empty string - nothing to encode")
+        return None, None
+
     di = make_frequency_dict(data)
     heap = make_priority_queue(di)
     tree = build_huffman_tree(heap)
@@ -156,7 +160,8 @@ def huffman_decoding(data,tree):
 if __name__ == "__main__":
     codes = {}
 
-    # Test cases
+    # Test cases - Regular
+
     a_great_sentence = "The bird is the word"
 
     print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
@@ -165,9 +170,75 @@ if __name__ == "__main__":
     encoded_data, tree = huffman_encoding(a_great_sentence)
 
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    print ("The content of the encoded data is: {}\n".format(encoded_data))
+    print ("The content of the encoded data is: {}\n".format(encoded_data)) # 0000001111110011101011101100100100110101101100111111000011101011101100
 
     decoded_data = huffman_decoding(encoded_data, tree)
 
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+
+    # Test case short string
+
+    a_great_sentence = "Hi"
+
+    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    print ("The content of the data is: {}\n".format(a_great_sentence))
+
+    encoded_data, tree = huffman_encoding(a_great_sentence)
+
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print ("The content of the encoded data is: {}\n".format(encoded_data)) # 01
+
+    decoded_data = huffman_decoding(encoded_data, tree)
+
+    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+
+    # Test case - long string
+
+    a_great_sentence = """
+        Turn your magic on, umi she'd say
+        Everything you want's a dream away
+        We are legends, every day
+        That's what she told him
+        Turn your magic on, to me she'd say
+        Everything you want's a dream away
+        Under this pressure, under this weight
+        We are diamonds
+        Now I feel my heart beating
+        I feel my heart beneath my skin
+        I feel my heart beating
+        Oh, you make me feel
+        Like I'm alive again
+        Alive again
+        Oh, you make me feel
+        Like I'm alive again
+        """
+
+
+    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    print ("The content of the data is: {}\n".format(a_great_sentence))
+
+    encoded_data, tree = huffman_encoding(a_great_sentence)
+
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print ("The content of the encoded data is: {}\n".format(encoded_data))
+    # 011101111111111111111010......0001011110101011101111111111111111
+
+    decoded_data = huffman_decoding(encoded_data, tree)
+
+    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+
+    # Test case - Empty string
+
+    a_great_sentence = ""
+
+    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    print ("The content of the data is: {}\n".format(a_great_sentence))
+
+    encoded_data, tree = huffman_encoding(a_great_sentence)
+    # Empty string message

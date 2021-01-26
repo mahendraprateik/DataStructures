@@ -56,8 +56,14 @@ def union(llist_1, llist_2):
     Returns:
     Union-ed linked list of all elements
     """
+
+    if not llist_1.head and not llist_2.head:
+        print("Cannot find union of 2 empty linkedlists") # Empty linkedlist case
+        return
+
     if llist_1.head is None:
         return llist_2
+
     elif llist_2.head is None:
         return llist_1
 
@@ -93,8 +99,12 @@ def intersection(llist_1, llist_2):
     Returns:
     Intersection-ed linked list of all elements
     """
-    if llist_1 is None or llist_2 is None:
-        return None
+    if llist_1.head is None and llist_2.head is None:
+        print("Cannot find intersection of 2 empty linkedlists")
+        return
+
+    if llist_1.head is None or llist_2.head is None:
+        return
 
     set1 = set()
 
@@ -126,7 +136,7 @@ def intersection(llist_1, llist_2):
     pass
 
 
-# Test cases
+# Test cases - Regular
 
 linked_list_1 = LinkedList()
 linked_list_2 = LinkedList()
@@ -197,3 +207,14 @@ Union
 Intersection
  1 --->
 """
+
+
+# Test case - Edge
+
+# Empty linked lists
+linked_list_7 = LinkedList()
+linked_list_8 = LinkedList()
+
+print("Union\n",union(linked_list_7, linked_list_8)) # Empty linked list warning
+
+print("Intersection\n",intersection(linked_list_7, linked_list_8)) # Empty linked list warning

@@ -40,6 +40,17 @@ def is_user_in_group(user, group):
       user(str): user name/id
       group(class:Group): group to check user membership against
     """
+
+    # Invalid user case
+    if len(user) == 0:
+        print("Please provide a non-empty user name")
+        return
+
+    # Invalid group case
+    if group is None:
+        print("Please provide a valid group object")
+        return
+
     if user == group.get_name() or user in group.get_users():
         return True
     if len(group.groups) == 0:
@@ -55,8 +66,17 @@ def is_user_in_group(user, group):
     return found
 
 
-# Test case
+# Test cases - Regular
 
 print(is_user_in_group(sub_child_user, child)) # True
 print(is_user_in_group(sub_child_user, parent))  # True
 print(is_user_in_group("Some User", sub_child))  # False
+
+
+# Test cases - Edge
+
+# Empty user and group
+print(is_user_in_group("", child)) # Empty user name warniing
+
+# Invalid group object
+print(is_user_in_group("", None)) # Invalid group object warning

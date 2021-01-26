@@ -52,7 +52,12 @@ def find_files(suffix, path):
        a list of paths
     """
 
+    if type(path) != str:
+        print("Please enter a valid path in the form of string")
+        return
+
     if not os.path.isdir(path):
+        print("Please enter a valid path")
         return
 
     contents = os.listdir(path)
@@ -83,9 +88,8 @@ if __name__ == "__main__":
     main()
 
 
-# Test cases
+# Test cases - Regular
 
-# Tests
 print(find_files('.c', '/Users/prateikmahendra/Downloads/testdir/'))
 """
 ['/Users/prateikmahendra/Downloads/testdir/subdir3/subsubdir1/b.c',
@@ -93,17 +97,24 @@ print(find_files('.c', '/Users/prateikmahendra/Downloads/testdir/'))
 '/Users/prateikmahendra/Downloads/testdir/subdir5/a.c',
 '/Users/prateikmahendra/Downloads/testdir/subdir1/a.c']
 """
+
+print(find_files('.c', '/Users/prateikmahendra/Downloads/testdir/subdir3'))
+# ['/Users/prateikmahendra/Downloads/testdir/subdir3/subsubdir1/b.c']
+
 print(find_files('.c', '/Users/prateikmahendra/Downloads/testdir/t1.c'))
 # None
-
-
-print(find_files('.c', ''))
-# None
-
 
 print(find_files('.c', '/Users/prateikmahendra/Downloads/testdir/subdir2'))
 # []
 
+# Test cases - Edge
 
-print(find_files('.c', '/Users/prateikmahendra/Downloads/testdir/subdir3'))
-# ['/Users/prateikmahendra/Downloads/testdir/subdir3/subsubdir1/b.c']
+# Empty path string
+print(find_files('.c', ''))
+# None
+
+print(find_files('.c', 'gibberish'))
+# None
+
+# Random int instead of path
+print(find_files('.c', 12345))

@@ -30,20 +30,26 @@ class LRU_Cache(object):
     def set(self, key, value):
         # Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item.
 
+        if self.capacity == 0: # 0 capacity check
+            print("Can't perform operations on 0 capacity cache")
+            return
+
         # if length of the ordered dict is more than the capacity we pop the least recent element
         if len(self.cache) >= self.capacity:
             self.cache.popitem(last=False)
+
+
         self.cache[key] = value
 
 
-# Test cases
+# Test cases - Regular
 
 our_cache = LRU_Cache(5)
 
-our_cache.set(1, 1);
-our_cache.set(2, 2);
-our_cache.set(3, 3);
-our_cache.set(4, 4);
+our_cache.set(1, 1)
+our_cache.set(2, 2)
+our_cache.set(3, 3)
+our_cache.set(4, 4)
 
 
 print(our_cache.get(1))       # returns 1
@@ -54,3 +60,21 @@ print(our_cache.set(5, 5))
 print(our_cache.set(6, 6))
 
 print(our_cache.get(3))    # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
+
+
+# Test cases - Edge
+
+# Empty cache
+our_cache = LRU_Cache(0)
+
+print(our_cache.set(1,10)) # return empty warning
+
+# Update existing key
+our_cache = LRU_Cache(10)
+
+our_cache.set(1,"old value")
+our_cache.get(1) # Returns old value
+
+our_cache.set(1, "new value") # returns updated value
+
+print(our_cache.get(1))

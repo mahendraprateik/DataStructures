@@ -37,6 +37,10 @@ class BlockChain(object):
         Parameters:
         data (str): data to be used to create the block that is being added
         """
+        if data is None or len(data) == 0:
+            print("Please provide a valid data value")
+            return
+
         if self.head is None:
             self.head = Block(datetime.datetime.utcnow().strftime("%d/%m/%Y %H:%M:%S"), data)
             self.tail = self.head
@@ -64,7 +68,9 @@ class BlockChain(object):
         """
         Convert the blocks in the blockchain into a list and return the list
         """
+
         if self.head is None:
+            print("There are no blocks in the chain")
             return
         li = []
         current_node = self.head
@@ -75,7 +81,8 @@ class BlockChain(object):
         return li
 
 
-# Test Cases
+# Test Cases - Regular
+
 block_chain = BlockChain()
 
 block1 = "First block"
@@ -88,7 +95,6 @@ block_chain.append(block2)
 block_chain.append(block3)
 
 print(block_chain.convert_to_list())
-
 """
 [['24/01/2021 20:00:17', None, 'First block'],
 ['24/01/2021 20:00:17', '0ea9277023796a23a4bb5ff95f2cf26c18ae5e01f339934d6420f93a526d63f3', 'Second block'],
@@ -98,10 +104,22 @@ print(block_chain.convert_to_list())
 block_chain.pop()
 
 print(block_chain.convert_to_list())
-
 """
 [['24/01/2021 20:00:17', None, 'First block'],
  ['24/01/2021 20:00:17',
   '0ea9277023796a23a4bb5ff95f2cf26c18ae5e01f339934d6420f93a526d63f3',
   'Second block']]
 """
+
+
+# Test cases - Edge
+
+# Empty blockchain
+block_chain = BlockChain()
+block1 = ""
+block_chain.append(block1) # Missinig data warning
+
+block_chain = BlockChain()
+block_chain.convert_to_list() # Empty blockchain warning
+
+# Trying to think of a test case for same value, but 2 blocks can have the same value in my best understanding
