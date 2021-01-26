@@ -1,6 +1,16 @@
-<h1> Problem 3: Huffman Coding </h1>
+# Problem 3: Huffman Coding 
 
-<h2> Worst case time complexity is: <b> O(nlogn) </b> </h2>
+## Method and Data Structures:
+The following data structures were used:
+
+* Node class: In order to create a tree
+* minheap: In order to build a priority queue to pop the minimum value easily
+* Tree: In order to build nodes around the minimum values and traverse through the nodes to decipher the codes
+
+## Worst case space complexity is: <b> O(k) </b> 
+k = number of nodes in the tree, since we end up creating a node for every value in the tree
+
+## Worst case time complexity is: <b> O(nlogn) </b> 
 
 * Algorithm:
     * huffman_encoding
