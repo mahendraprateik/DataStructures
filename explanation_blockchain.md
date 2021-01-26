@@ -1,6 +1,12 @@
-<h1> Problem 5: blockchain </h1>
+# Problem 5: blockchain
 
-<h2> Worst case time complexity is: O(n) </h2>
+## Method and Data Structures:
+I used a Linkedlist in this since it is tailor made for a data structure where the information of the next/previous node is stored in the node.
+
+## Worst case space complexity is: <b> O(n) </b>
+n = number of blocks to be used to create a blockchain
+
+## Worst case time complexity is: O(n)
 
 * Algorithm:
     * Append method: <b> O(1) </b>
