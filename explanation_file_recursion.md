@@ -1,8 +1,9 @@
-Problem 2: File Recursion
+<h1> Problem 2: File Recursion </h1>
 
-Worst case time complexity is: O(n*k)
-    Algorithm:
-        For loop: O(n)
-        List append: O(1)
-        List extend: O(k)
-        Extends list by k elements for each for loop run: O(n*k)
+<h2> Worst case time complexity is: <b> O(n*k) </b> </h2>
+
+* Algorithm:
+    * For loop: <b> O(n) </b>
+    * List append: <b> O(1) </b>
+    * List extend: <b> O(k) </b>
+    * Extends list by k elements for each for loop run: <b> O(n* k) </b>
