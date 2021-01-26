@@ -3,6 +3,9 @@
 ## Method and Data Structures:
 Many data structures can be used perform LRU caching like dictionaries, sets (maybe) as all of them work in a constant time. Ordered dictionary was chosen as it provides an additional advantage of popping the most/recent element in constant time when the LRU cache reaches its capacity.
 
+## Worst case space complexity is: <b> O(n) </b>
+Since it stores n items in the cache
+
 ## Worst case time complexity is: <b> O(1) </b>
  
 * Algorithm:
